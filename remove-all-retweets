@@ -1,16 +1,28 @@
-// Open Retweet Menu
-window.setInterval(function() {
-	var element = document.querySelector('div[role="button"][data-testid="unretweet"]');
-	if (element) {
-		element.click();
-	}	
-},1000);
+/*
+  Steps:
+  1) Open twitter account from Chrome or Firefox
+  2) Goto your profile
+  3) Press F12 to open dev. console
+  4) Copy paste below code and it will start removing re-tweets
+  5) Refresh the page when done
+*/
 
-// Click Undo retweet menu item
+// Keep on scrolling to the bottom to load new tweets
 window.setInterval(function() {
-	var element = document.querySelector('div[role="menuitem"][data-testid="unretweetConfirm"]');
-	if (element) {
-		console.log(element);
-		element.click();
-	}	
-},500);
+    window.scrollTo(0, document.body.scrollHeight);
+}, 500);
+
+// Open Re-tweet menu
+window.setInterval(function() {
+    var dropbtn = document.querySelector('div[data-testid="unretweet"]');
+    if (dropbtn)
+        dropbtn.click();
+}, 100);
+
+// Click Undo Retweet
+window.setInterval(function() {
+    var deletebtns = document.querySelectorAll('div[role="menuitem"][data-testid="unretweetConfirm"]');
+    deletebtns.forEach(function(item) {
+        item.click();
+    });
+}, 50);
